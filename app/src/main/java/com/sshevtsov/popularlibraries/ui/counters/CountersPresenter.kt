@@ -9,8 +9,8 @@ class CountersPresenter(private val countersRepo: CountersRepo) : Contract.Prese
         this.view = view
         view.apply {
             setButtonOneText(countersRepo.getCurrent(0).toString())
-            setButtonTwoText(countersRepo.getCurrent(0).toString())
-            setButtonThreeText(countersRepo.getCurrent(0).toString())
+            setButtonTwoText(countersRepo.getCurrent(1).toString())
+            setButtonThreeText(countersRepo.getCurrent(2).toString())
         }
     }
 
