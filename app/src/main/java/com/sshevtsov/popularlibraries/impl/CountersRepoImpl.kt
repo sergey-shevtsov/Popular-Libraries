@@ -3,7 +3,14 @@ package com.sshevtsov.popularlibraries.impl
 import com.sshevtsov.popularlibraries.model.CountersRepo
 
 class CountersRepoImpl : CountersRepo {
-    private val counters = mutableListOf(0, 0, 0)
+    companion object {
+        private const val START_COUNTER_ONE_VALUE = 0
+        private const val START_COUNTER_TWO_VALUE = 0
+        private const val START_COUNTER_THREE_VALUE = 0
+    }
+
+    private val counters =
+        mutableListOf(START_COUNTER_ONE_VALUE, START_COUNTER_TWO_VALUE, START_COUNTER_THREE_VALUE)
 
     override fun getCurrent(index: Int): Int {
         return counters[index]
