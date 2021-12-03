@@ -7,18 +7,13 @@ class CountersPresenter(private val countersRepo: CountersRepo) : Contract.Prese
 
     override fun onAttach(view: Contract.View) {
         this.view = view
-        view.setCounterButtonText(
-            CounterType.COUNTER_ONE,
-            countersRepo.getCurrent(CounterType.COUNTER_ONE.ordinal).toString()
-        )
-        view.setCounterButtonText(
-            CounterType.COUNTER_TWO,
-            countersRepo.getCurrent(CounterType.COUNTER_TWO.ordinal).toString()
-        )
-        view.setCounterButtonText(
-            CounterType.COUNTER_THREE,
-            countersRepo.getCurrent(CounterType.COUNTER_THREE.ordinal).toString()
-        )
+        val counterTypes = CounterType.values()
+        for (counterType in counterTypes) {
+            view.setCounterButtonText(
+                counterType,
+                countersRepo.getCurrent(counterType).toString()
+            )
+        }
     }
 
     override fun onDetach() {
@@ -28,7 +23,7 @@ class CountersPresenter(private val countersRepo: CountersRepo) : Contract.Prese
     override fun onCounterButtonClick(counterType: CounterType) {
         view?.setCounterButtonText(
             counterType,
-            countersRepo.next(counterType.ordinal).toString()
+            countersRepo.next(counterType).toString()
         )
     }
 }

@@ -1,27 +1,51 @@
 package com.sshevtsov.popularlibraries.impl
 
 import com.sshevtsov.popularlibraries.model.CountersRepo
+import com.sshevtsov.popularlibraries.ui.counters.CounterType
 
 class CountersRepoImpl : CountersRepo {
     companion object {
-        private const val START_COUNTER_ONE_VALUE = 0
-        private const val START_COUNTER_TWO_VALUE = 0
-        private const val START_COUNTER_THREE_VALUE = 0
+        private const val COUNTER_ONE_INDEX = 0
+        private const val COUNTER_TWO_INDEX = 1
+        private const val COUNTER_THREE_INDEX = 2
+
+        private const val COUNTER_ONE_START_VALUE = 0
+        private const val COUNTER_TWO_START_VALUE = 0
+        private const val COUNTER_THREE_START_VALUE = 0
     }
 
     private val counters =
-        mutableListOf(START_COUNTER_ONE_VALUE, START_COUNTER_TWO_VALUE, START_COUNTER_THREE_VALUE)
+        mutableListOf(COUNTER_ONE_START_VALUE, COUNTER_TWO_START_VALUE, COUNTER_THREE_START_VALUE)
 
-    override fun getCurrent(index: Int): Int {
-        return counters[index]
+    override fun getCurrent(counterType: CounterType): Int {
+        return when (counterType) {
+            CounterType.COUNTER_ONE -> counters[COUNTER_ONE_INDEX]
+            CounterType.COUNTER_TWO -> counters[COUNTER_TWO_INDEX]
+            CounterType.COUNTER_THREE -> counters[COUNTER_THREE_INDEX]
+        }
     }
 
-    override fun next(index: Int): Int {
-        counters[index]++
-        return getCurrent(index)
+    override fun next(counterType: CounterType): Int {
+        when (counterType) {
+            CounterType.COUNTER_ONE -> {
+                counters[COUNTER_ONE_INDEX]++
+            }
+            CounterType.COUNTER_TWO -> {
+                counters[COUNTER_TWO_INDEX]++
+            }
+            CounterType.COUNTER_THREE -> {
+                counters[COUNTER_THREE_INDEX]++
+            }
+        }
+        return getCurrent(counterType)
     }
 
-    override fun set(index: Int, value: Int) {
-        counters[index] = value
+    override fun set(counterType: CounterType, value: Int) {
+        when (counterType) {
+            CounterType.COUNTER_ONE -> counters[COUNTER_ONE_INDEX] = value
+            CounterType.COUNTER_TWO -> counters[COUNTER_TWO_INDEX] = value
+            CounterType.COUNTER_THREE -> counters[COUNTER_THREE_INDEX] = value
+        }
     }
+
 }
