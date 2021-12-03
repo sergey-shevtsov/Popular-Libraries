@@ -31,22 +31,18 @@ class CountersFragment : Fragment(), Contract.View {
 
     private fun initView() {
         binding.apply {
-            btnCounterOne.setOnClickListener { presenter.onButtonOneClick() }
-            btnCounterTwo.setOnClickListener { presenter.onButtonTwoClick() }
-            btnCounterThree.setOnClickListener { presenter.onButtonThreeClick() }
+            btnCounterOne.setOnClickListener { presenter.onCounterButtonClick(CounterType.COUNTER_ONE) }
+            btnCounterTwo.setOnClickListener { presenter.onCounterButtonClick(CounterType.COUNTER_TWO) }
+            btnCounterThree.setOnClickListener { presenter.onCounterButtonClick(CounterType.COUNTER_THREE) }
         }
     }
 
-    override fun setButtonOneText(text: String) {
-        binding.btnCounterOne.text = text
-    }
-
-    override fun setButtonTwoText(text: String) {
-        binding.btnCounterTwo.text = text
-    }
-
-    override fun setButtonThreeText(text: String) {
-        binding.btnCounterThree.text = text
+    override fun setCounterButtonText(counterType: CounterType, text: String) {
+        when (counterType) {
+            CounterType.COUNTER_ONE -> binding.btnCounterOne.text = text
+            CounterType.COUNTER_TWO -> binding.btnCounterTwo.text = text
+            CounterType.COUNTER_THREE -> binding.btnCounterThree.text = text
+        }
     }
 
     override fun onDestroyView() {

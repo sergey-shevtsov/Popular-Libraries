@@ -7,30 +7,28 @@ class CountersPresenter(private val countersRepo: CountersRepo) : Contract.Prese
 
     override fun onAttach(view: Contract.View) {
         this.view = view
-        view.apply {
-            setButtonOneText(countersRepo.getCurrent(OrderIndex.ZERO_INDEX.ordinal).toString())
-            setButtonTwoText(countersRepo.getCurrent(OrderIndex.ONE_INDEX.ordinal).toString())
-            setButtonThreeText(countersRepo.getCurrent(OrderIndex.TWO_INDEX.ordinal).toString())
-        }
+        view.setCounterButtonText(
+            CounterType.COUNTER_ONE,
+            countersRepo.getCurrent(CounterType.COUNTER_ONE.ordinal).toString()
+        )
+        view.setCounterButtonText(
+            CounterType.COUNTER_TWO,
+            countersRepo.getCurrent(CounterType.COUNTER_TWO.ordinal).toString()
+        )
+        view.setCounterButtonText(
+            CounterType.COUNTER_THREE,
+            countersRepo.getCurrent(CounterType.COUNTER_THREE.ordinal).toString()
+        )
     }
 
     override fun onDetach() {
         view = null
     }
 
-    override fun onButtonOneClick() {
-        view?.setButtonOneText(countersRepo.next(OrderIndex.ZERO_INDEX.ordinal).toString())
-    }
-
-    override fun onButtonTwoClick() {
-        view?.setButtonTwoText(countersRepo.next(OrderIndex.ONE_INDEX.ordinal).toString())
-    }
-
-    override fun onButtonThreeClick() {
-        view?.setButtonThreeText(countersRepo.next(OrderIndex.TWO_INDEX.ordinal).toString())
-    }
-    
-    private enum class OrderIndex {
-        ZERO_INDEX, ONE_INDEX, TWO_INDEX
+    override fun onCounterButtonClick(counterType: CounterType) {
+        view?.setCounterButtonText(
+            counterType,
+            countersRepo.next(counterType.ordinal).toString()
+        )
     }
 }
