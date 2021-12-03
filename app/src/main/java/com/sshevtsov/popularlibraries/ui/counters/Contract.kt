@@ -2,6 +2,7 @@ package com.sshevtsov.popularlibraries.ui.counters
 
 class Contract {
     interface View {
+        fun initView()
         fun setCounterButtonText(counterType: CounterType, text: String)
     }
 

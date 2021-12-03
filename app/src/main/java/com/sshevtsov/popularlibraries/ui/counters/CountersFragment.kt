@@ -26,10 +26,9 @@ class CountersFragment : Fragment(), Contract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onAttach(this)
-        initView()
     }
 
-    private fun initView() {
+    override fun initView() {
         binding.apply {
             btnCounterOne.setOnClickListener { presenter.onCounterButtonClick(CounterType.COUNTER_ONE) }
             btnCounterTwo.setOnClickListener { presenter.onCounterButtonClick(CounterType.COUNTER_TWO) }

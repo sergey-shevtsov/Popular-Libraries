@@ -7,6 +7,8 @@ class CountersPresenter(private val countersRepo: CountersRepo) : Contract.Prese
 
     override fun onAttach(view: Contract.View) {
         this.view = view
+        view.initView()
+
         val counterTypes = CounterType.values()
         for (counterType in counterTypes) {
             view.setCounterButtonText(
