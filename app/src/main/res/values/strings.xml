@@ -3,4 +3,5 @@
     <string name="login_hint">Login</string>
     <string name="password_hint">Password</string>
     <string name="sign_in_button_text">Sign in</string>
+    <string name="empty_field_error_text">Can\'t be empty!</string>
 </resources>
