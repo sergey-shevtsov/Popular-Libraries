@@ -3,9 +3,11 @@ package com.sshevtsov.popularlibraries.navigation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
+import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.sshevtsov.popularlibraries.R
+import com.sshevtsov.popularlibraries.util.hideKeyboard
 
 class CustomNavigator(activity: FragmentActivity, container: Int) :
     AppNavigator(activity, container) {
@@ -26,5 +28,10 @@ class CustomNavigator(activity: FragmentActivity, container: Int) :
                     R.animator.slide_out_top
                 )
         }
+    }
+
+    override fun applyCommand(command: Command) {
+        super.applyCommand(command)
+        activity.hideKeyboard()
     }
 }
