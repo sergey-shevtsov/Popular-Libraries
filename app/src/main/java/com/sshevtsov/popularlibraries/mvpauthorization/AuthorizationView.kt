@@ -10,4 +10,7 @@ interface AuthorizationView : MvpView {
 
     @Skip
     fun showEmptyPasswordError()
+
+    @Skip
+    fun clearFocus()
 }

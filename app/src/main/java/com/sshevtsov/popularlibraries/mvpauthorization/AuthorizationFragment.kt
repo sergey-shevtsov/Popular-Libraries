@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import com.sshevtsov.popularlibraries.App
 import com.sshevtsov.popularlibraries.R
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
+import com.sshevtsov.popularlibraries.util.hideKeyboard
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -38,6 +39,10 @@ class AuthorizationFragment
         binding.passwordEditText.doOnTextChanged { _, _, _, _ ->
             binding.passwordInputLayout.error = null
         }
+
+        binding.root.setOnClickListener {
+            presenter.onEmptyAreaClicked()
+        }
     }
 
     override fun showEmptyLoginError() {
@@ -48,6 +53,13 @@ class AuthorizationFragment
     override fun showEmptyPasswordError() {
         binding.passwordInputLayout.error = getString(R.string.empty_field_error_text)
         binding.passwordEditText.requestFocus()
+    }
+
+    override fun clearFocus() {
+        requireActivity().currentFocus?.let { view ->
+            requireActivity().hideKeyboard()
+            view.clearFocus()
+        }
     }
 
     companion object {

@@ -22,5 +22,8 @@ class AuthorizationPresenter(private val router: Router) : MvpPresenter<Authoriz
         if (validationPassed) router.navigateTo(GreetingsScreen(login))
     }
 
+    fun onEmptyAreaClicked() {
+        viewState.clearFocus()
+    }
 
 }
