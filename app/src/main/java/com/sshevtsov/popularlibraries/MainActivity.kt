@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        if (savedInstanceState == null) App.instance.router.navigateTo(AuthorizationScreen)
+        if (savedInstanceState == null) App.instance.router.replaceScreen(AuthorizationScreen)
     }
 
     override fun onResumeFragments() {
