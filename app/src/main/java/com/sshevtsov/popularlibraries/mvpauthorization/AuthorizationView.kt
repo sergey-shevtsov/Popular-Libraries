@@ -1,13 +1,13 @@
 package com.sshevtsov.popularlibraries.mvpauthorization
 
 import moxy.MvpView
-import moxy.viewstate.strategy.alias.OneExecution
+import moxy.viewstate.strategy.alias.Skip
 
 interface AuthorizationView : MvpView {
 
-    @OneExecution
+    @Skip
     fun showEmptyLoginError()
 
-    @OneExecution
+    @Skip
     fun showEmptyPasswordError()
 }
