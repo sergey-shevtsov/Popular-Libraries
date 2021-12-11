@@ -2,10 +2,12 @@ package com.sshevtsov.popularlibraries.mvpauthorization
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.snackbar.Snackbar
 import com.sshevtsov.popularlibraries.App
 import com.sshevtsov.popularlibraries.R
+import com.sshevtsov.popularlibraries.ViewState
 import com.sshevtsov.popularlibraries.data.UserRepositoryFactory
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
 import com.sshevtsov.popularlibraries.util.hideKeyboard
@@ -46,6 +48,13 @@ class AuthorizationFragment
 
         binding.root.setOnClickListener {
             presenter.onEmptyAreaClicked()
+        }
+    }
+
+    override fun setState(viewState: ViewState) {
+        when (viewState) {
+            ViewState.LOADING -> binding.loadingFrame.isVisible = true
+            ViewState.IDLE -> binding.loadingFrame.isVisible = false
         }
     }
 

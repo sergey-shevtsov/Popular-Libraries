@@ -3,4 +3,5 @@
     <dimen name="fragment_authorization_padding">16dp</dimen>
     <dimen name="sign_in_button_margin">16dp</dimen>
     <dimen name="greetings_text_view_margin">32dp</dimen>
+    <dimen name="loading_frame_translation_z">10dp</dimen>
 </resources>
