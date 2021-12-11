@@ -6,6 +6,9 @@ import moxy.viewstate.strategy.alias.Skip
 interface AuthorizationView : MvpView {
 
     @Skip
+    fun showIncorrectDataError()
+
+    @Skip
     fun showEmptyLoginError()
 
     @Skip

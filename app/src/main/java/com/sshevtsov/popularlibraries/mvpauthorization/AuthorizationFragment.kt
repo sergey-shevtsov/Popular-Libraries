@@ -3,8 +3,10 @@ package com.sshevtsov.popularlibraries.mvpauthorization
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.snackbar.Snackbar
 import com.sshevtsov.popularlibraries.App
 import com.sshevtsov.popularlibraries.R
+import com.sshevtsov.popularlibraries.data.UserRepositoryFactory
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
 import com.sshevtsov.popularlibraries.util.hideKeyboard
 import moxy.MvpAppCompatFragment
@@ -13,7 +15,9 @@ import moxy.ktx.moxyPresenter
 class AuthorizationFragment
     : MvpAppCompatFragment(R.layout.fragment_authorization), AuthorizationView {
 
-    private val presenter by moxyPresenter { AuthorizationPresenter(App.instance.router) }
+    private val presenter by moxyPresenter {
+        AuthorizationPresenter(UserRepositoryFactory.create(), App.instance.router)
+    }
 
     private lateinit var binding: FragmentAuthorizationBinding
 
@@ -43,6 +47,10 @@ class AuthorizationFragment
         binding.root.setOnClickListener {
             presenter.onEmptyAreaClicked()
         }
+    }
+
+    override fun showIncorrectDataError() {
+        Snackbar.make(binding.root, R.string.incorrect_data_error_text, Snackbar.LENGTH_LONG).show()
     }
 
     override fun showEmptyLoginError() {
