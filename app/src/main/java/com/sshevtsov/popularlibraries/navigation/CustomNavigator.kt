@@ -29,9 +29,4 @@ class CustomNavigator(activity: FragmentActivity, container: Int) :
                 )
         }
     }
-
-    override fun applyCommand(command: Command) {
-        super.applyCommand(command)
-        activity.hideKeyboard()
-    }
 }
