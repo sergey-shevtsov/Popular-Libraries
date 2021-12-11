@@ -1,6 +1,8 @@
 package com.sshevtsov.popularlibraries.data
 
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class UserRepositoryImpl : UserRepository {
 
@@ -14,5 +16,7 @@ class UserRepositoryImpl : UserRepository {
 
     override fun getUserByLoginAndPassword(login: String, password: String): Observable<User> =
         Observable.just(users)
+            .subscribeOn(Schedulers.io())
+            .delay(1500L, TimeUnit.MILLISECONDS)
             .map { list -> list.first { user -> user.login == login && user.password == password } }
 }
