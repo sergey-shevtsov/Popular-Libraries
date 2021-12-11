@@ -11,6 +11,7 @@ import com.sshevtsov.popularlibraries.ViewState
 import com.sshevtsov.popularlibraries.data.UserRepositoryFactory
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
 import com.sshevtsov.popularlibraries.util.hideKeyboard
+import com.sshevtsov.popularlibraries.util.showKeyboard
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -39,11 +40,11 @@ class AuthorizationFragment
         }
 
         binding.loginEditText.doOnTextChanged { _, _, _, _ ->
-            binding.loginInputLayout.error = null
+            presenter.onFieldTextChanged(AuthorizationFieldEnum.LOGIN)
         }
 
         binding.passwordEditText.doOnTextChanged { _, _, _, _ ->
-            binding.passwordInputLayout.error = null
+            presenter.onFieldTextChanged(AuthorizationFieldEnum.PASSWORD)
         }
 
         binding.root.setOnClickListener {
@@ -62,21 +63,60 @@ class AuthorizationFragment
         Snackbar.make(binding.root, R.string.incorrect_data_error_text, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun showEmptyLoginError() {
-        binding.loginInputLayout.error = getString(R.string.empty_field_error_text)
-        binding.loginEditText.requestFocus()
+    override fun showNoValidFieldError(fieldEnum: AuthorizationFieldEnum) {
+        when (fieldEnum) {
+            AuthorizationFieldEnum.LOGIN -> {
+                binding.loginInputLayout.error = getString(R.string.no_valid_login_error_text)
+            }
+            AuthorizationFieldEnum.PASSWORD -> {
+                binding.passwordInputLayout.error = getString(R.string.no_valid_password_error_text)
+            }
+        }
     }
 
-    override fun showEmptyPasswordError() {
-        binding.passwordInputLayout.error = getString(R.string.empty_field_error_text)
-        binding.passwordEditText.requestFocus()
+    override fun showEmptyFieldError(fieldEnum: AuthorizationFieldEnum) {
+        when (fieldEnum) {
+            AuthorizationFieldEnum.LOGIN -> {
+                binding.loginInputLayout.error = getString(R.string.empty_field_error_text)
+            }
+            AuthorizationFieldEnum.PASSWORD -> {
+                binding.passwordInputLayout.error = getString(R.string.empty_field_error_text)
+            }
+        }
+    }
+
+    override fun cleanFieldError(fieldEnum: AuthorizationFieldEnum) {
+        when (fieldEnum) {
+            AuthorizationFieldEnum.LOGIN -> {
+                binding.loginInputLayout.error = null
+            }
+            AuthorizationFieldEnum.PASSWORD -> {
+                binding.passwordInputLayout.error = null
+            }
+        }
+    }
+
+    override fun requestFocusOnField(fieldEnum: AuthorizationFieldEnum) {
+        when (fieldEnum) {
+            AuthorizationFieldEnum.LOGIN -> {
+                binding.loginEditText.requestFocus()
+            }
+            AuthorizationFieldEnum.PASSWORD -> {
+                binding.passwordEditText.requestFocus()
+            }
+        }
+    }
+
+    override fun showKeyboard() {
+        requireActivity().showKeyboard()
+    }
+
+    override fun hideKeyboard() {
+        requireActivity().hideKeyboard()
     }
 
     override fun clearFocus() {
-        requireActivity().currentFocus?.let { view ->
-            requireActivity().hideKeyboard()
-            view.clearFocus()
-        }
+        requireActivity().currentFocus?.clearFocus()
     }
 
     companion object {
