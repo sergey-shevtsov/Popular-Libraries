@@ -13,10 +13,22 @@ interface AuthorizationView : MvpView {
     fun showIncorrectDataError()
 
     @Skip
-    fun showEmptyLoginError()
+    fun showNoValidFieldError(fieldEnum: AuthorizationFieldEnum)
 
     @Skip
-    fun showEmptyPasswordError()
+    fun showEmptyFieldError(fieldEnum: AuthorizationFieldEnum)
+
+    @Skip
+    fun cleanFieldError(fieldEnum: AuthorizationFieldEnum)
+
+    @Skip
+    fun requestFocusOnField(fieldEnum: AuthorizationFieldEnum)
+
+    @Skip
+    fun showKeyboard()
+
+    @Skip
+    fun hideKeyboard()
 
     @Skip
     fun clearFocus()
