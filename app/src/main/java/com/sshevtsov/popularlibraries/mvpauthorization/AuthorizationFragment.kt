@@ -10,13 +10,11 @@ import com.sshevtsov.popularlibraries.R
 import com.sshevtsov.popularlibraries.ViewState
 import com.sshevtsov.popularlibraries.data.UserRepositoryFactory
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
-import com.sshevtsov.popularlibraries.util.hideKeyboard
-import com.sshevtsov.popularlibraries.util.showKeyboard
-import moxy.MvpAppCompatFragment
+import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
 class AuthorizationFragment
-    : MvpAppCompatFragment(R.layout.fragment_authorization), AuthorizationView {
+    : InteractiveMvpAppCompatFragment(R.layout.fragment_authorization), AuthorizationView {
 
     private val presenter by moxyPresenter {
         AuthorizationPresenter(UserRepositoryFactory.create(), App.instance.router)
@@ -106,18 +104,6 @@ class AuthorizationFragment
                 binding.passwordEditText.requestFocus()
             }
         }
-    }
-
-    override fun showKeyboard() {
-        requireActivity().showKeyboard()
-    }
-
-    override fun hideKeyboard() {
-        requireActivity().hideKeyboard()
-    }
-
-    override fun clearFocus() {
-        requireActivity().currentFocus?.clearFocus()
     }
 
     override fun onDestroyView() {

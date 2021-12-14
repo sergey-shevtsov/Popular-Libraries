@@ -1,10 +1,10 @@
 package com.sshevtsov.popularlibraries.mvpauthorization
 
 import com.sshevtsov.popularlibraries.ViewState
-import moxy.MvpView
+import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpView
 import moxy.viewstate.strategy.alias.Skip
 
-interface AuthorizationView : MvpView {
+interface AuthorizationView : InteractiveMvpView {
 
     @Skip
     fun setState(viewState: ViewState)
@@ -23,13 +23,4 @@ interface AuthorizationView : MvpView {
 
     @Skip
     fun requestFocusOnField(fieldEnum: AuthorizationFieldEnum)
-
-    @Skip
-    fun showKeyboard()
-
-    @Skip
-    fun hideKeyboard()
-
-    @Skip
-    fun clearFocus()
 }
