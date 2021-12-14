@@ -5,27 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/fragment_authorization_guideline_indent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/fragment_authorization_guideline_indent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_end"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/fragment_authorization_guideline_indent" />
-
     <FrameLayout
         android:id="@+id/loading_frame"
         android:layout_width="0dp"
@@ -57,9 +36,12 @@
         android:layout_height="wrap_content"
         android:hint="@string/login_hint"
         app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_top">
+        android:layout_marginStart="@dimen/authorization_login_input_layout_margin"
+        android:layout_marginTop="@dimen/authorization_login_input_layout_margin"
+        android:layout_marginEnd="@dimen/authorization_login_input_layout_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_edit_text"
@@ -77,8 +59,8 @@
         android:hint="@string/password_hint"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintStart_toStartOf="@id/login_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/login_input_layout"
         app:layout_constraintTop_toBottomOf="@id/login_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -96,8 +78,8 @@
         android:layout_marginStart="@dimen/sign_in_button_margin"
         android:layout_marginEnd="@dimen/sign_in_button_margin"
         android:text="@string/sign_in_button_text"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintStart_toStartOf="@id/login_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/login_input_layout"
         app:layout_constraintTop_toBottomOf="@id/password_input_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
