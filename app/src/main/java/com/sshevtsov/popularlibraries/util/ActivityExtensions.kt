@@ -17,3 +17,7 @@ fun Activity.showKeyboard() {
         imm.showSoftInput(it, InputMethodManager.SHOW_IMPLICIT)
     }
 }
+
+fun Activity.clearFocus() {
+    this.currentFocus?.clearFocus()
+}
