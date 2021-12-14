@@ -4,4 +4,7 @@
     <dimen name="greetings_text_view_margin">32dp</dimen>
     <dimen name="loading_frame_translation_z">10dp</dimen>
     <dimen name="authorization_login_input_layout_margin">16dp</dimen>
+    <dimen name="result_text_view_margin_top">16dp</dimen>
+    <dimen name="count_button_margin">16dp</dimen>
+    <dimen name="number_input_layout_margin">16dp</dimen>
 </resources>

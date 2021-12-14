@@ -7,4 +7,8 @@
     <string name="incorrect_data_error_text">Login or password is incorrect</string>
     <string name="no_valid_login_error_text">Valid characters: [A&#8211;Z][a&#8211;z][0&#8211;9]@$_</string>
     <string name="no_valid_password_error_text">Valid characters: [A&#8211;Z][a&#8211;z][0&#8211;9]!@#$+&#8211;_*</string>
+    <string name="app_bar_square_number">Square number</string>
+    <string name="count_button_text">To the square power!</string>
+    <string name="number_input_layout_hint">Put the number here</string>
+    <string name="result_text_view_placeholder">Result will be here</string>
 </resources>
