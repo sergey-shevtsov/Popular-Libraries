@@ -18,6 +18,13 @@ class SquareNumberPresenter : MvpPresenter<SquareNumberView>() {
     }
 
     fun onCountButtonClicked(number: String) {
+        if (!isValid(number)) {
+            viewState.showEmptyFieldError()
+            viewState.requestFocusOnField()
+            viewState.showKeyboard()
+            return
+        }
+
         subject.onNext(number)
     }
 
@@ -35,6 +42,17 @@ class SquareNumberPresenter : MvpPresenter<SquareNumberView>() {
 
     private fun removeTail(number: Double): String =
         number.toString().replace(".0", "")
+
+    private fun isValid(number: String): Boolean = number.isNotEmpty()
+
+    fun onFieldTextChanged() {
+        viewState.cleanFieldError()
+    }
+
+    fun onEmptyAreaClicked() {
+        viewState.hideKeyboard()
+        viewState.clearFocus()
+    }
 
     override fun onDestroy() {
         compositeDisposable.dispose()
