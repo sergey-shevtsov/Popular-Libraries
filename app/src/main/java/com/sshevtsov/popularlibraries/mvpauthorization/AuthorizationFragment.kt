@@ -22,11 +22,12 @@ class AuthorizationFragment
         AuthorizationPresenter(UserRepositoryFactory.create(), App.instance.router)
     }
 
-    private lateinit var binding: FragmentAuthorizationBinding
+    private var _binding: FragmentAuthorizationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAuthorizationBinding.bind(view)
+        _binding = FragmentAuthorizationBinding.bind(view)
 
         initView()
     }
@@ -117,6 +118,11 @@ class AuthorizationFragment
 
     override fun clearFocus() {
         requireActivity().currentFocus?.clearFocus()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

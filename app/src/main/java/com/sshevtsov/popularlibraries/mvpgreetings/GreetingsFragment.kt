@@ -13,16 +13,22 @@ class GreetingsFragment : MvpAppCompatFragment(R.layout.fragment_greetings), Gre
 
     private val presenter by moxyPresenter { GreetingsPresenter(login) }
 
-    private lateinit var binding: FragmentGreetingsBinding
+    private var _binding: FragmentGreetingsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentGreetingsBinding.bind(view)
+        _binding = FragmentGreetingsBinding.bind(view)
     }
 
     override fun showGreetings(login: String) {
         binding.greetingsTextView.text =
             String.format("%s, %s!", "Hello", login)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
