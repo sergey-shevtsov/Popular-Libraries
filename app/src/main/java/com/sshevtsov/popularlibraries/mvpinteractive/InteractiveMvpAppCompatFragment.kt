@@ -6,17 +6,17 @@ import com.sshevtsov.popularlibraries.util.showKeyboard
 import moxy.MvpAppCompatFragment
 
 abstract class InteractiveMvpAppCompatFragment(contentLayoutId: Int) :
-    MvpAppCompatFragment(contentLayoutId), InteractiveMvpView {
+    MvpAppCompatFragment(contentLayoutId) {
 
-    override fun showKeyboard() {
+    fun showKeyboard() {
         requireActivity().showKeyboard()
     }
 
-    override fun hideKeyboard() {
+    fun hideKeyboard() {
         requireActivity().hideKeyboard()
     }
 
-    override fun clearFocus() {
+    fun clearFocus() {
         requireActivity().clearFocus()
     }
 }
