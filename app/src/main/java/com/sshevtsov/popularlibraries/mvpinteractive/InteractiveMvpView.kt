@@ -1,4 +1,4 @@
-package com.sshevtsov.popularlibraries.mvpbase
+package com.sshevtsov.popularlibraries.mvpinteractive
 
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.Skip

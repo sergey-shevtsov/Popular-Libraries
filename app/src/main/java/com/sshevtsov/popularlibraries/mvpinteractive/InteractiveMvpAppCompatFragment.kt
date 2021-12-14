@@ -1,4 +1,4 @@
-package com.sshevtsov.popularlibraries.mvpbase
+package com.sshevtsov.popularlibraries.mvpinteractive
 
 import com.sshevtsov.popularlibraries.util.clearFocus
 import com.sshevtsov.popularlibraries.util.hideKeyboard

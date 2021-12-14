@@ -10,7 +10,7 @@ import com.sshevtsov.popularlibraries.R
 import com.sshevtsov.popularlibraries.ViewState
 import com.sshevtsov.popularlibraries.data.UserRepositoryFactory
 import com.sshevtsov.popularlibraries.databinding.FragmentAuthorizationBinding
-import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpAppCompatFragment
+import com.sshevtsov.popularlibraries.mvpinteractive.InteractiveMvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
 class AuthorizationFragment

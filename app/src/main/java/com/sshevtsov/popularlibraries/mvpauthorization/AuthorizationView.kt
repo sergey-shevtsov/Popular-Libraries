@@ -1,7 +1,7 @@
 package com.sshevtsov.popularlibraries.mvpauthorization
 
 import com.sshevtsov.popularlibraries.ViewState
-import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpView
+import com.sshevtsov.popularlibraries.mvpinteractive.InteractiveMvpView
 import moxy.viewstate.strategy.alias.Skip
 
 interface AuthorizationView : InteractiveMvpView {

@@ -1,6 +1,6 @@
 package com.sshevtsov.popularlibraries.mvpsquarenumber
 
-import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpView
+import com.sshevtsov.popularlibraries.mvpinteractive.InteractiveMvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 import moxy.viewstate.strategy.alias.Skip
 
