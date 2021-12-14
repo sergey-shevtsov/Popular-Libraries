@@ -18,6 +18,14 @@ class SquareNumberFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSquareNumberBinding.bind(view)
+
+        binding.countButton.setOnClickListener {
+            presenter.onCountButtonClicked(binding.numberInputEditText.text.toString())
+        }
+    }
+
+    override fun setResult(result: String) {
+        binding.resultTextView.text = result
     }
 
     override fun onDestroyView() {
