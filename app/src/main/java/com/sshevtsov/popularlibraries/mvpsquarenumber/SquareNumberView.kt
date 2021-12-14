@@ -1,10 +1,20 @@
 package com.sshevtsov.popularlibraries.mvpsquarenumber
 
-import moxy.MvpView
+import com.sshevtsov.popularlibraries.mvpbase.InteractiveMvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
+import moxy.viewstate.strategy.alias.Skip
 
-interface SquareNumberView : MvpView {
+interface SquareNumberView : InteractiveMvpView {
 
     @AddToEndSingle
     fun setResult(result: String)
+
+    @Skip
+    fun showEmptyFieldError()
+
+    @Skip
+    fun cleanFieldError()
+
+    @Skip
+    fun requestFocusOnField()
 }
