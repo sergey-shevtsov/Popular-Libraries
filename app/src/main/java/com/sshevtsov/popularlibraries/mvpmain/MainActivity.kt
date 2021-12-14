@@ -5,6 +5,7 @@ import android.view.MenuItem
 import com.sshevtsov.popularlibraries.App
 import com.sshevtsov.popularlibraries.R
 import com.sshevtsov.popularlibraries.navigation.CustomNavigator
+import com.sshevtsov.popularlibraries.util.hideKeyboard
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 
@@ -26,6 +27,10 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun closeKeyboard() {
+        hideKeyboard()
     }
 
     override fun onResumeFragments() {

@@ -15,6 +15,7 @@ class MainPresenter(
     }
 
     fun onSquareNumberActionClicked() {
+        viewState.closeKeyboard()
         router.navigateTo(SquareNumberScreen)
     }
 }
